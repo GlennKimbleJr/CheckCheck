@@ -11,15 +11,27 @@ class ChecklistItemTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function the_complete_method_sets_the_completed_at_timestamp()
+    public function the_make_complete_method_sets_the_completed_at_timestamp()
     {
         $item = factory(ChecklistItem::class)->make();
 
         $this->assertNull($item->completed_at);
 
-        $item->complete();
+        $item->makeComplete();
 
         $this->assertNotNull($item->completed_at);
+    }
+
+    /** @test */
+    public function the_make_incomplete_method_sets_the_completed_at_timestamp()
+    {
+        $item = factory(ChecklistItem::class)->make(['completed_at' => now()]);
+
+        $this->assertNotNull($item->completed_at);
+
+        $item->makeInComplete();
+
+        $this->assertNull($item->completed_at);
     }
 
     /** @test */

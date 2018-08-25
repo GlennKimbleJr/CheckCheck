@@ -13,9 +13,17 @@ class ChecklistItem extends Model
         return (bool) $this->completed_at;
     }
 
-    public function complete()
+    public function makeComplete()
     {
         $this->completed_at = now();
+        $this->save();
+
+        return $this;
+    }
+
+    public function makeIncomplete()
+    {
+        $this->completed_at = null;
         $this->save();
 
         return $this;

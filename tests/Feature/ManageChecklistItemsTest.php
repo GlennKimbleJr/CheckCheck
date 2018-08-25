@@ -41,9 +41,21 @@ class ManageChecklistItemsTest extends TestCase
     {
         $checklistItem = factory(ChecklistItem::class)->create();
 
-        $this->put(route('checklists.items.complete', $checklistItem))->assertStatus(200);
+        $this->put(route('checklists.items.complete.toggle', $checklistItem))->assertStatus(200);
 
         $this->assertTrue($checklistItem->fresh()->isCompleted());
+    }
+
+    /** @test */
+    public function completed_items_can_be_marked_as_incomplete()
+    {
+        $checklistItem = factory(ChecklistItem::class)->create([
+            'completed_at' => now(),
+        ]);
+
+        $this->put(route('checklists.items.complete.toggle', $checklistItem))->assertStatus(200);
+
+        $this->assertFalse($checklistItem->fresh()->isCompleted());
     }
 
     /** @test */

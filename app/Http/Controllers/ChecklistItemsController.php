@@ -85,8 +85,8 @@ class ChecklistItemsController extends Controller
         $item->delete();
     }
 
-    public function complete(ChecklistItem $item)
+    public function toggleComplete(ChecklistItem $item)
     {
-        $item->complete();
+        $item->isCompleted() ? $item->makeIncomplete() : $item->makeComplete();
     }
 }
