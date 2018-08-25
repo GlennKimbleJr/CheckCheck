@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::resource('checklists', 'ChecklistController')->except('edit');
 Route::resource('checklists.items', 'ChecklistItemsController')->only(['store','update','destroy']);
 Route::put('items/{item}/complete', 'ChecklistItemsController@toggleComplete')->name('checklists.items.complete.toggle');
