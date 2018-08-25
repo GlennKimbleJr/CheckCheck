@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-8 offset-2">
-            <h1>{{ $checklist->name }}</h1>
+            <h1 data-edit-name>{{ $checklist->name }}</h1>
 
               @foreach ($checklist->items as $item)
                 <div
@@ -56,6 +56,44 @@
             type: 'PUT',
             success: function (data) {
                 $item.toggleClass('completed')
+            }
+        });
+    });
+
+    $('body').on('click', '[data-edit-name]', function() {
+        var $el = $(this);
+
+        var originalText = $el.text();
+
+        var $input = $('<input/>').val(originalText);
+        $el.replaceWith($input);
+
+        var save = function() {
+            var input = $.trim($input.val());
+
+            if (! input) {
+                input = originalText;
+            }
+
+            $.ajax({
+                url: '{{ route("checklists.update", $checklist->id) }}',
+                type: 'PUT',
+                data: {
+                    name: input
+                },
+                success: function (data) {
+                    var $span = $('<h1 data-edit-name />').text(input);
+
+                    $input.replaceWith($span);
+                }
+            });
+        };
+
+        $input.on('blur', save);
+
+        $input.keypress(function(e) {
+            if (e.which == 13) {
+                save();
             }
         });
     });
