@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Checklist;
 use Tests\TestCase;
+use App\ChecklistItem;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ManageCheckListTest extends TestCase
@@ -82,6 +83,28 @@ class ManageCheckListTest extends TestCase
         $this->get(route('checklists.show', $checklist))
             ->assertStatus(200)
             ->assertSee($checklist->name);
+    }
+
+    /** @test */
+    public function checklist_items_display_on_the_checklist_page()
+    {
+        $item = factory(ChecklistItem::class)->create();
+
+        $this->get(route('checklists.show', $item->checklist))
+            ->assertStatus(200)
+            ->assertSee($item->name);
+    }
+
+    /** @test */
+    public function items_belonging_to_another_checklist_wont_load_on_the_checklist_page()
+    {
+        $checklist = factory(Checklist::class)->create();
+
+        $notYourItem = factory(ChecklistItem::class)->create();
+
+        $this->get(route('checklists.show', $checklist))
+            ->assertStatus(200)
+            ->assertDontSee($notYourItem->name);
     }
 
     /** @test */

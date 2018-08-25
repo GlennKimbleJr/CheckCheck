@@ -48,6 +48,8 @@ class ChecklistController extends Controller
      */
     public function show(Checklist $checklist)
     {
+        $checklist->loadMissing('items');
+
         return view('checklists.show', compact('checklist'));
     }
 

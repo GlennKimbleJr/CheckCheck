@@ -4,6 +4,11 @@
     <div class="row">
         <div class="col-8 offset-2">
             <h1>{{ $checklist->name }}</h1>
+            <ul>
+              @foreach ($checklist->items as $item)
+                <li>{{ $item->name }}</li>
+              @endforeach
+            </ul>
         </div>
 
 

@@ -2,11 +2,17 @@
 
 namespace App;
 
+use App\Checklist;
 use Illuminate\Database\Eloquent\Model;
 
 class ChecklistItem extends Model
 {
     protected $fillable = ['name'];
+
+    public function checklist()
+    {
+        return $this->belongsTo(Checklist::class);
+    }
 
     public function isCompleted()
     {
