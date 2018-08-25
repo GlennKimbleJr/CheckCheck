@@ -124,7 +124,7 @@
             });
         };
 
-        $input.on('blur', save);
+        $input.on('blur', save).focus();
 
         $input.keypress(function(e) {
             if (e.which == 13) {
@@ -177,7 +177,7 @@
             });
         };
 
-        $input.on('blur', save);
+        $input.on('blur', save).focus();
 
         $input.keypress(function(e) {
             if (e.which == 13) {
