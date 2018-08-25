@@ -41,7 +41,7 @@ class ManageChecklistItemsTest extends TestCase
     {
         $checklistItem = factory(ChecklistItem::class)->create();
 
-        $this->put(route('checklist.items.complete', $checklistItem))->assertStatus(200);
+        $this->put(route('checklists.items.complete', $checklistItem))->assertStatus(200);
 
         $this->assertTrue($checklistItem->fresh()->isCompleted());
     }
@@ -51,7 +51,7 @@ class ManageChecklistItemsTest extends TestCase
     {
         $checklistItem = factory(ChecklistItem::class)->create();
 
-        $this->delete(route('checklist.items.destroy', $checklistItem))->assertStatus(200);
+        $this->delete(route('checklists.items.destroy', $checklistItem))->assertStatus(200);
 
         $this->assertNull($checklistItem->fresh());
     }
