@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('/', function () {
+    return redirect()->to(route('checklists.index'));
+})->name('home');
+
 Route::resource('checklists', 'ChecklistController')->except(['edit','create']);
 Route::resource('checklists.items', 'ChecklistItemsController')->only('store');
 Route::put('items/{item}/complete', 'ChecklistItemsController@toggleComplete')->name('checklists.items.complete.toggle');
