@@ -20,12 +20,6 @@ class ManageCheckListTest extends TestCase
     }
 
     /** @test */
-    public function the_create_checklist_page_loads()
-    {
-        $this->get(route('checklists.create'))->assertStatus(200);
-    }
-
-    /** @test */
     public function checklists_can_be_created()
     {
         $response = $this->post(route('checklists.store'), [

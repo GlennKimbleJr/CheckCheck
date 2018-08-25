@@ -14,13 +14,6 @@ class ChecklistController extends Controller
         ]);
     }
 
-    public function create(Checklist $checklist)
-    {
-        return view('checklists.create', [
-            'checklist' => $checklist,
-        ]);
-    }
-
     public function store(CreateChecklistRequest $request)
     {
         $checklist = Checklist::create($request->only('name'));
