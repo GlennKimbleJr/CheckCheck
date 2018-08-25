@@ -6,7 +6,7 @@ use App\Checklist;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class CreateCheckListTest extends TestCase
+class ManageCheckListTest extends TestCase
 {
     use RefreshDatabase;
 
