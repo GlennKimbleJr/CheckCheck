@@ -16,3 +16,6 @@ Route::get('/', function () {
 });
 
 Route::resource('checklists', 'ChecklistController')->except('edit');
+Route::resource('checklists.items', 'ChecklistItemsController')->except('destroy');
+Route::put('items/{item}/complete', 'ChecklistItemsController@complete')->name('checklist.items.complete');
+Route::delete('items/{item}', 'ChecklistItemsController@destroy')->name('checklist.items.destroy');
