@@ -4,7 +4,15 @@
 <div class="container">
     <div class="row">
         <div class="col-8 offset-2">
-            <h1 data-edit-name>{{ $checklist->name }}</h1>
+            <div class="row">
+                <div class="col-10">
+                    <h1 data-edit-name>{{ $checklist->name }}</h1>
+                </div>
+
+                <div class="col-2 my-2 text-right">
+                    <button class="btn btn-sm btn-secondary" id="deleteChecklistBtn">Delete</button>
+                </div>
+            </div>
 
               @foreach ($checklist->items as $item)
                 <div
@@ -43,6 +51,11 @@
         </div>
     </div>
 </div>
+
+<form action="{{ route('checklists.destroy', $checklist) }}" method="post" id="deleteChecklistForm" class="d-none">
+    @csrf
+    @method('DELETE')
+</form>
 @endsection
 
 @section('scripts')
@@ -156,6 +169,12 @@
                 save();
             }
         });
+    });
+
+    $('#deleteChecklistBtn').on('click', function () {
+        if (confirm("Are you sure you want to delete this checklist?")) {
+            $('#deleteChecklistForm').submit();
+        }
     });
 </script>
 @endsection
