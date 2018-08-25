@@ -24,7 +24,7 @@
 
     <div class="row">
         <div class="col-8 offset-2">
-            @foreach ($checklist->items as $item)
+            @forelse ($checklist->items as $item)
                 <div
                     @if ($item->isCompleted())
                         class="completed"
@@ -37,7 +37,9 @@
                     >
                     <span data-edit-item data-id="{{ $item->id }}">{{ $item->name }}</span>
                 </div>
-            @endforeach
+            @empty
+                <i>Add items to your checklist.</i>
+            @endforelse
         </div>
     </div>
 
