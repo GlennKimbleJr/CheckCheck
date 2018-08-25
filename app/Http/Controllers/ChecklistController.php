@@ -20,9 +20,11 @@ class ChecklistController extends Controller
         ]);
     }
 
-    public function create()
+    public function create(Checklist $checklist)
     {
-
+        return view('checklists.create', [
+            'checklist' => $checklist,
+        ]);
     }
 
     /**

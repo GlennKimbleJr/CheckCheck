@@ -3,13 +3,9 @@
 <div class="container">
     <div class="row">
         <div class="col-8 offset-2">
-            <h1>{{ $checklist->name }}</h1>
-        </div>
+            <h1>Add Checklist</h1>
 
-
-        <div class="col-8 offset-2">
-            <hr>
-            <form action="{{ route('checklists.items.store', $checklist) }}" method="POST">
+            <form action="{{ route('checklists.store') }}" method="POST">
                 @csrf
 
                 <div class="form-group">
@@ -18,7 +14,7 @@
                     <div class="text-danger">{{ $errors->first('name') }}</div>
                 </div>
 
-                <button class="btn btn-success">Add Item</button>
+                <button class="btn btn-block btn-primary">Save</button>
             </form>
         </div>
     </div>
