@@ -55,4 +55,28 @@ class ManageChecklistItemsTest extends TestCase
 
         $this->assertNull($checklistItem->fresh());
     }
+
+    /** @test */
+    public function items_can_be_updated()
+    {
+        $checklistItem = factory(ChecklistItem::class)->create(['name' => 'old']);
+
+        $this->put(route('checklists.items.update', $checklistItem), [
+            'name' => 'new',
+        ])->assertStatus(200);
+
+        $this->assertEquals('new', $checklistItem->fresh()->name);
+    }
+
+    /** @test */
+    public function the_name_field_is_required_to_update_an_item()
+    {
+        $checklistItem = factory(ChecklistItem::class)->create(['name' => 'old']);
+
+        $this->put(route('checklists.items.update', $checklistItem), [
+            'name' => null,
+        ])->assertSessionHasErrors('name');
+
+        $this->assertEquals('old', $checklistItem->fresh()->name);
+    }
 }
