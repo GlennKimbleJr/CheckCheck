@@ -9,12 +9,22 @@
                     <h1 data-edit-name>{{ $checklist->name }}</h1>
                 </div>
 
-                <div class="col-2 my-2 text-right">
+                <div class="col-2 mt-2 text-right">
                     <button class="btn btn-sm btn-secondary" id="deleteChecklistBtn">Delete</button>
                 </div>
             </div>
+        </div>
+    </div>
 
-              @foreach ($checklist->items as $item)
+    <div class="row">
+        <div class="col-8 offset-2">
+            <hr>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-8 offset-2">
+            @foreach ($checklist->items as $item)
                 <div
                     @if ($item->isCompleted())
                         class="completed"
@@ -27,13 +37,18 @@
                     >
                     <span data-edit-item data-id="{{ $item->id }}">{{ $item->name }}</span>
                 </div>
-              @endforeach
-
+            @endforeach
         </div>
+    </div>
 
-
+    <div class="row">
         <div class="col-8 offset-2">
             <hr>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-8 offset-2">
             <form action="{{ route('checklists.items.store', $checklist) }}" method="POST">
                 @csrf
 
