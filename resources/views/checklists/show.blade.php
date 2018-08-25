@@ -60,7 +60,7 @@
                         <div class="text-danger">{{ $errors->first('name') }}</div>
                     </div>
                     <div class="col-2">
-                        <button class="btn btn-success">Add Item</button>
+                        <button class="btn btn-primary">Add Item</button>
                     </div>
                 </div>
 

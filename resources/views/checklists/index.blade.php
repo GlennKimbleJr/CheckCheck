@@ -3,12 +3,6 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-8 offset-2">
-            <h1>Checklists</h1>
-        </div>
-    </div>
-
-    <div class="row">
         <div class="col-8 offset-2 d-flex flex-wrap">
             @foreach ($checklists as $checklist)
                 <div class="w-50 p-2">
@@ -29,8 +23,8 @@
     </div>
 
     <div class="row my-4">
-        <div class="col-8 offset-2">
-            <button data-toggle="modal" data-target=".modal" class="btn btn-block btn-success">Add Checklist</button>
+        <div class="col-8 offset-2 text-center border-top pt-3">
+            <button data-toggle="modal" data-target=".modal" class="btn btn-sm btn-primary">Add Checklist</button>
         </div>
     </div>
 </div>
@@ -57,7 +51,7 @@
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-success">Save</button>
+                <button type="submit" class="btn btn-primary">Save</button>
             </div>
         </form>
     </div>
