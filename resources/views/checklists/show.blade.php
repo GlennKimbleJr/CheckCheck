@@ -17,7 +17,7 @@
                             checked
                         @endif
                     >
-                    {{ $item->name }}
+                    <span data-edit-item data-id="{{ $item->id }}">{{ $item->name }}</span>
                 </div>
               @endforeach
 
@@ -58,6 +58,55 @@
                 $item.toggleClass('completed')
             }
         });
-    })
+    });
+
+    $('body').on('click', '[data-edit-item]', function() {
+        var $el = $(this);
+        var id = $(this).data('id');
+
+        var $input = $('<input/>').val($el.text());
+        $el.replaceWith($input);
+
+        var save = function() {
+            var input = $.trim($input.val());
+
+            if (! input) {
+                var route = '{{ route("checklists.items.destroy", ':id') }}'.replace(':id', id);
+
+                $.ajax({
+                    url: route,
+                    type: 'DELETE',
+                    success: function (data) {
+                        $input.closest('div').remove();
+                    }
+                });
+
+                return;
+            }
+
+            var route = '{{ route("checklists.items.update", ':id') }}'.replace(':id', id);
+
+            $.ajax({
+                url: route,
+                type: 'PUT',
+                data: {
+                    name: input
+                },
+                success: function (data) {
+                    var $span = $('<span data-edit-item data-id="' + id + '"/>').text(input);
+
+                    $input.replaceWith($span);
+                }
+            });
+        };
+
+        $input.on('blur', save);
+
+        $input.keypress(function(e) {
+            if (e.which == 13) {
+                save();
+            }
+        });
+    });
 </script>
 @endsection
