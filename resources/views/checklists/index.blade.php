@@ -5,22 +5,32 @@
     <div class="row">
         <div class="col-8 offset-2">
             <h1>Checklists</h1>
-            @foreach ($checklists as $checklist)
-                <div class="card w-50 text-center">
-                    <div class="card-body">
-                        {{ $checklist->name }}
-                    </div>
+        </div>
+    </div>
 
-                    <div class="card-footer">
-                        <a href="{{ route('checklists.show', $checklist) }}" class="btn btn-sm btn-primary">
-                            View
-                        </a>
+    <div class="row">
+        <div class="col-8 offset-2 d-flex flex-wrap">
+            @foreach ($checklists as $checklist)
+                <div class="w-50 p-2">
+                    <div class="card w-100 text-center">
+                        <div class="card-body">
+                            {{ $checklist->name }}
+                        </div>
+
+                        <div class="card-footer">
+                            <a href="{{ route('checklists.show', $checklist) }}" class="btn btn-sm btn-secondary">
+                                View
+                            </a>
+                        </div>
                     </div>
                 </div>
             @endforeach
+        </div>
+    </div>
 
-            <hr>
-            <button data-toggle="modal" data-target=".modal" class="btn btn-success">Add Checklist</button>
+    <div class="row my-4">
+        <div class="col-8 offset-2">
+            <button data-toggle="modal" data-target=".modal" class="btn btn-block btn-success">Add Checklist</button>
         </div>
     </div>
 </div>
