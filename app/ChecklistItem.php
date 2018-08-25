@@ -21,15 +21,17 @@ class ChecklistItem extends Model
 
     public function makeComplete()
     {
-        $this->completed_at = now();
-        $this->save();
-
-        return $this;
+        return $this->setCompletedAt(now());
     }
 
     public function makeIncomplete()
     {
-        $this->completed_at = null;
+        return $this->setCompletedAt(null);
+    }
+
+    private function setCompletedAt($time)
+    {
+        $this->completed_at = $time;
         $this->save();
 
         return $this;
