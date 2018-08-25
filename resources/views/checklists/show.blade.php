@@ -29,13 +29,16 @@
             <form action="{{ route('checklists.items.store', $checklist) }}" method="POST">
                 @csrf
 
-                <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}">
-                    <div class="text-danger">{{ $errors->first('name') }}</div>
+                <div class="form-group row">
+                    <div class="col-10">
+                        <input type="text" name="name" id="add-item-name" class="form-control" value="{{ old('name') }}" autofocus>
+                        <div class="text-danger">{{ $errors->first('name') }}</div>
+                    </div>
+                    <div class="col-2">
+                        <button class="btn btn-success">Add Item</button>
+                    </div>
                 </div>
 
-                <button class="btn btn-success">Add Item</button>
             </form>
         </div>
     </div>
@@ -55,7 +58,9 @@
             url: route,
             type: 'PUT',
             success: function (data) {
-                $item.toggleClass('completed')
+                $item.toggleClass('completed');
+
+                $('#add-item-name').focus();
             }
         });
     });
@@ -85,6 +90,8 @@
                     var $span = $('<h1 data-edit-name />').text(input);
 
                     $input.replaceWith($span);
+
+                    $('#add-item-name').focus();
                 }
             });
         };
@@ -116,6 +123,8 @@
                     type: 'DELETE',
                     success: function (data) {
                         $input.closest('div').remove();
+
+                        $('#add-item-name').focus();
                     }
                 });
 
@@ -134,6 +143,8 @@
                     var $span = $('<span data-edit-item data-id="' + id + '"/>').text(input);
 
                     $input.replaceWith($span);
+
+                    $('#add-item-name').focus();
                 }
             });
         };
