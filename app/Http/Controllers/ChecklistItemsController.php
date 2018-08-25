@@ -18,6 +18,8 @@ class ChecklistItemsController extends Controller
     public function store(AddChecklistItemRequest $request, Checklist $checklist)
     {
         $checklist->items()->create($request->only('name'));
+
+        return redirect()->to(route('checklists.show', $checklist));
     }
 
     /**

@@ -18,7 +18,7 @@ class ManageChecklistItemsTest extends TestCase
 
         $this->post(route('checklists.items.store', $checklist), [
             'name' => 'Item 1',
-        ])->assertStatus(200);
+        ])->assertRedirect(route('checklists.show', $checklist));
 
         $this->assertCount(1, $checklist->items);
         $this->assertEquals('Item 1', $checklist->items->first()->name);
