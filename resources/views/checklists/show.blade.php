@@ -9,7 +9,7 @@
                     <h1 data-edit-name>{{ $checklist->name }}</h1>
                 </div>
 
-                <div class="col-2 mt-2 text-right">
+                <div class="col-2 text-right">
                     <button class="btn btn-sm btn-secondary" id="deleteChecklistBtn">Delete</button>
                 </div>
             </div>
