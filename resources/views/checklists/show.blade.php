@@ -5,11 +5,11 @@
     <div class="row">
         <div class="col-8 offset-2">
             <div class="row">
-                <div class="col-10">
+                <div class="col-7 col-md-9">
                     <h1 data-edit-name>{{ $checklist->name }}</h1>
                 </div>
 
-                <div class="col-2 text-right">
+                <div class="col-5 col-md-3 text-right">
                     <button class="btn btn-sm btn-secondary" id="deleteChecklistBtn">Delete</button>
                 </div>
             </div>
@@ -22,7 +22,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row" id="checklistItems">
         <div class="col-8 offset-2">
             @forelse ($checklist->items as $item)
                 <div
@@ -55,12 +55,12 @@
                 @csrf
 
                 <div class="form-group row">
-                    <div class="col-10">
+                    <div class="col-7 col-md-9">
                         <input type="text" name="name" id="add-item-name" class="form-control" value="{{ old('name') }}" autofocus>
                         <div class="text-danger">{{ $errors->first('name') }}</div>
                     </div>
-                    <div class="col-2">
-                        <button class="btn btn-primary">Add Item</button>
+                    <div class="col-5 col-md-3">
+                        <button class="btn btn-block btn-primary">Add Item</button>
                     </div>
                 </div>
 

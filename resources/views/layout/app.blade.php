@@ -10,12 +10,26 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
     <style>
+        @import url('https://fonts.googleapis.com/css?family=Fira+Sans');
+        @import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+
+        body {
+            font-family: 'Fira Sans', sans-serif;
+            font-size: 18px;
+        }
+
+        #checklistItems {
+            font-family: 'Indie Flower', cursive;
+            font-size: larger;
+            line-height: 38px;
+        }
+
         .completed {
             text-decoration: line-through;
         }
     </style>
 </head>
-<body>
+<body class="bg-light">
     <div class="container">
         <div class="row">
             <div class="col-8 offset-2">
