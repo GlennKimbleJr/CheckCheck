@@ -33,10 +33,10 @@
     <div class="container">
         <div class="row">
             <div class="col-8 offset-2">
-                <header class="mb-4 p-3 text-center bg-success rounded-bottom">
-                    <a href="/" class="text-secondary">
-                        <div class="d-inline p-2 bg-light rounded">
-                            <i class="fa fa-lg fa-check text-success"></i>
+                <header class="mb-4 p-3 text-center rounded-bottom">
+                    <a href="/">
+                        <div class="d-inline p-2 rounded">
+                            <i class="fa fa-lg fa-check-double text-success"></i>
                         </div>
                     </a>
                 </header>
