@@ -12,4 +12,9 @@ class Checklist extends Model
     {
         return $this->hasMany(ChecklistItem::class);
     }
+
+    public function isComplete()
+    {
+        return $this->items->count() == $this->items->completed()->count();
+    }
 }

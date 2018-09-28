@@ -7,6 +7,11 @@
             <div class="row">
                 <div class="col-7 col-md-9">
                     <h1 data-edit-name>{{ $checklist->name }}</h1>
+                    @if ($checklist->isComplete())
+                        <span class="badge badge-success">COMPLETE</span>
+                    @else
+                        <span>{{ $checklist->items->completed()->count() }} / {{ $checklist->items->count() }}</span>
+                    @endif
                 </div>
 
                 <div class="col-5 col-md-3 text-right">

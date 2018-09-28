@@ -6,7 +6,15 @@
         <div class="col-8 offset-2 d-flex flex-wrap">
             @foreach ($checklists as $checklist)
                 <div class="w-50 p-2">
-                    <div class="card w-100 text-center">
+                    <div class="card w-100 text-center {{ $checklist->isComplete() ? 'bg-dark text-success' : '' }}">
+                        <div class="card-header text-right small">
+                            @if ($checklist->isComplete())
+                                <span class="badge badge-success">COMPLETE</span>
+                            @else
+                                {{ $checklist->items->completed()->count() }} / {{ $checklist->items->count() }}
+                            @endif
+                        </div>
+
                         <div class="card-body">
                             {{ $checklist->name }}
                         </div>

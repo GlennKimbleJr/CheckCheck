@@ -10,7 +10,7 @@ class ChecklistController extends Controller
     public function index()
     {
         return view('checklists.index', [
-            'checklists' => Checklist::get(),
+            'checklists' => Checklist::with('items')->get(),
         ]);
     }
 
